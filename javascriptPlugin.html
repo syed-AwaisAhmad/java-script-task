@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <title>form with plug in</title>
+</head>
+<style>
+    .form-block {
+        width: 450px;
+        background-color: white !important;
+        margin: auto;
+        border-radius: 10px;
+        margin-top: 50px;
+    }
+    .error {
+      color: red;
+      border-color: red;
+      
+   }
+</style>
+<body>
+    <h1 class="text-center">java script plugin</h1>
+    <div class="form-block">
+        <form class="row g-3" id="myForm">
+            <div class="col-md-6">
+                <input type="text" class="form-control position-relative" id="inputName" placeholder="" name ="inputName">
+                <span class="icon_name"></span>                    
+            </div>
+
+            <div class="col-md-6">
+                <input type="text" class="form-control position-relative" id="inputLname" placeholder="Last Name" name="inputLname">
+                <span class="iconLname"></span>
+            </div>
+            <div class="col-12 mb-0 ">
+                <p class="mt-0 mb-0" name="gender">Gender</p>
+            </div>
+            <div class="col-4 mt-0">
+                <input class="form-check-input gender-field" type="radio" name="Gender" id="Male" value="Male">
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Male
+                </label>
+            </div>
+            <div class="col-4 mt-0">
+                <input class="form-check-input gender-field" type="radio" name="Gender" id="female"  value="female">
+                <label class="form-check-label" for="flexRadioDefault2">
+                    female
+                </label></div>
+            <div class="col-4 mt-0">
+                <input class= "form-check-input gender-field" type="radio" name="Gender" id="costum" value="costum">
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Costum
+                </label>
+            </div>
+            <div class="form-control specification col-12 d-none">
+                <input type="text" class="" id="specs" placeholder="specify yourself">
+            </div>
+            <div class="col-12">
+                <input type="text" class="form-control" id="inputcell" placeholder="Mobile number or Email" name="inputcell">
+            </div>
+            <div class="col-12">
+                <input type="password" class="form-control" id="inputPass" placeholder="New Password" name="inputPass">
+            </div>
+            <div class="col-12">
+                <textarea id="bios" class="form-control" rows="5" placeholder="Type your message here..." name="bios"></textarea>
+            </div>
+            <div class="col-12">
+                <button type="" class="btn btn-primary" id="submit">Sign in</button>
+            </div>
+        </form>
+
+    </div>
+</body>
+<script>
+    $(document).ready(function() {
+        $("#myForm").validate({
+            rules: {
+                inputName: {
+                    required: true
+                },
+                inputLname: {
+                    required: true
+                },
+                gender: {
+                    required: true
+                },
+                inputcell: {
+                    required: true,
+                    email: true
+                },
+                inputPass: {
+                    required: true,
+                    minlength: 6
+                },
+                bios:{
+                    required: true,
+                    minlength: 10
+                }
+            },
+            messages: {
+                inputName: {
+                    required: "Please enter your first name"
+                },
+                inputLname: {
+                    required: "Please enter your last name"
+                },
+                gender: {
+                    required: "Please select your gender"
+                },
+                inputcell: {
+                    required: "Please enter your mobile number or email",
+                    email: "Please enter a valid email address"
+                },
+                inputPass: {
+                    required: "Please provide a password",
+                    minlength: "Your password must be at least 8 characters long"
+                },
+                bios:{
+                    required:"write something about you",
+                    minlength:"minimum length is 10 words"
+                }
+            },
+            // highlight: function (element) {
+            //     $(element).parent().addClass('error')
+            // },
+            // unhighlight: function (element) {
+            //     $(element).parent().removeClass('error')
+            // }
+            })
+            $("#submit").on("click",function(event){
+                event.preventDefault();
+                chkwords();
+            })
+            function chkwords(){
+                let words = ['bad','dirty','shut','waiste'];
+                let message = $("#bios").val();
+                let msgwords = message.split(" ");
+                alert(msgwords);
+                msgwords.forEach(function(value,index) {
+                    console.log( index +"="+ value);
+                    for(let i =0; i<message.length; i++){
+
+                        if(value === message[i]){
+                            console.log(value);
+                            $("textarea").css("border-bottom", "2px solid red"); 
+                        }
+                    }
+                    
+                });
+                
+            }
+    });
+</script>
+</html>
