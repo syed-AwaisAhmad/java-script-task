@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>sign up from</form>
+    </title>
+</head>
+<style>
+    body {
+        background-color: rgb(199, 199, 228);
+    }
+
+    .logo {
+        width: 300px;
+        height: 120px;
+
+    }
+
+    .form_block {
+        width: 450px;
+        background-color: white !important;
+        margin: auto;
+        border-radius: 10px;
+    }
+
+    .form_header {
+        margin-bottom: 1px solid grey;
+    }
+
+    .form_data {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    input,
+    select {
+        height: 40px;
+        border-radius: 10px;
+
+    }
+    .icon_name{
+        position: absolute;
+        right: 691px;
+        top: 224px;
+    }
+    .iconLname{
+        position: absolute;
+        right: 490px;
+        top: 223px;
+
+    }
+</style>
+
+<body>
+    <div class="main">
+        <div class="text-center">
+            <img class="logo" src="https://static.xx.fbcdn.net/rsrc.php/y1/r/4lCu2zih0ca.svg" alt="Facebook">
+        </div>
+    </div>
+    <div class="form_block">
+        <div class="form_header text-center">
+            <h4>Create New Account</h4>
+            <p>its quick and easy</p>
+        </div>
+        <div class="form_data">
+            <form class="row g-3">
+                <div class="col-md-6">
+                    <input type="text" class="form-control position-relative" id="inputName" placeholder="Name">
+                    <span class="icon_name"></span>                    
+                </div>
+
+                <div class="col-md-6">
+                    <input type="text" class="form-control position-relative" id="inputLname" placeholder="Last Name">
+                    <span class="iconLname"></span>
+                </div>
+                <div class="col-12 mb-0 ">
+                    <p class="mt-0 mb-0">Date Of birth</p>
+                </div>
+                <div class="col-4 mt-0 inputDay ">
+                    <select id="inputDay" class="form-select">
+                        <option selected disabled>Day</option>
+                    </select>
+                </div>
+                <div class="col-4 mt-0 inputMonth">
+                    <select id="inputMonth" class="form-select">
+                        <option selected disabled>month</option>
+                        <option>...</option>
+                    </select>
+                </div>
+                <div class="col-4 mt-0 inputYear">
+                    <select id="inputYear" class="form-select">
+                        <option selected disabled>year</option>
+                    </select>
+                </div>
+                <div class="col-12 mb-0  ">
+                    <p class="mt-0 mb-0" name="gender">Gender</p>
+                </div>
+                <div class="col-4 mt-0">
+                    <input class="form-check-input gender-field" type="radio" name="Gender" id="Male" value="Male">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Male
+                    </label>
+                </div>
+                <div class="col-4 mt-0">
+                    <input class="form-check-input gender-field" type="radio" name="Gender" id="female"  value="female">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        female
+                    </label></div>
+                <div class="col-4 mt-0">
+                    <input class="form-check-input gender-field" type="radio" name="Gender" id="costum" value="costum">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Costum
+                    </label>
+                </div>
+                <div class="specification col-12 d-none">
+                    <input type="text" class="form-control" id="specs" placeholder="specify yourself">
+                </div>
+                <div class="col-12">
+                    <input type="text" class="form-control" id="inputcell" placeholder="Mobile number or Email">
+                </div>
+                <div class="col-12">
+                    <input type="password" class="form-control" id="inputPass" placeholder="New Password">
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary" id="submit">Sign in</button>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+<script>
+    
+    $(document).ready(function (){
+        let firstName;
+        let lastName ;
+        let day ;
+        $("#submit").on("click" ,function(){
+            event.preventDefault();
+                firstName = $("#inputName").val();
+                lastName = $("#inputLname").val();
+                day = $("#inputDay").val();
+                console.log(firstName ,lastName);
+            if(firstName == ''){
+                $("#inputName").css("border","1px solid red");
+               $(".icon_name").html('<i class="fa fa-exclamation-circle text-danger"></i>');
+            }
+            $("#inputName").on("focus", function() {
+                $(this).css("border", ""); // Reset border color on focus
+                
+            });
+            if(lastName == ''){
+                $("#inputLname").css({border:"1px solid red"});
+                $(".iconLname").html('<i class="fa fa-exclamation-circle text-danger"></i>');
+            }
+            $("#inputLname").on("focus", function() {
+                $(this).css("border", ""); // Reset border color on focus
+                
+            });
+            if($("#inputDay").val()== null){
+                $("#inputDay").css({border:"1px solid red"})
+            }
+            $("#inputDay").on("focus", function() {
+                $(this).css("border", ""); 
+            });
+            if($("#inputMonth").val()== null){
+                $("#inputMonth").css({border:"1px solid red"})
+            }
+            $("#inputMonth").on("focus", function() {
+                $(this).css("border", ""); 
+            });
+            if($("#inputYear").val()== null){
+                $("#inputYear").css({border:"1px solid red"})
+            }
+            $("#inputYear").on("focus", function() {
+                $(this).css("border", ""); 
+            });
+            
+            if($("#male").val()== null || $("#female").val()== null || $("#female").val()== null){
+                $("#male","#female","#costum").css({border:"1px solid red"})
+            }
+            $("#male","#female","#costum").on("focus", function() {
+                $(this).css("border", ""); 
+            });
+            if($("#inputcell").val()== ""){
+                $("#inputcell").css({border:"1px solid red"})
+            }
+            $("#inputcell").on("focus", function() {
+                $(this).css("border", "");
+            });
+            if($("#inputPass").val()== ""){
+                $("#inputPass").css({border:"1px solid red"})
+            }
+            $("#inputPass").on("focus", function() {
+                $(this).css("border", "");
+            });
+            
+        })
+        $("#inputDay").on("click",function(){
+            let day;
+            let i;
+            for(i=1; i<=31; i++){
+                day =`<option value="${i}">${i}</option>`;
+                $("#inputDay").append(day);
+            }
+        })
+        $("#inputYear").on("click",function(){
+            let year;
+            for(let i=1990; i<=2024; i++){
+                year =`<option value="${i}">${i}</option>`;
+                $("#inputYear").append(year);
+            }
+        })
+    })
+    $('.gender-field').on("change", function() {
+    let selectedValue = $(".gender-field:checked").val(); // Get selected radio value
+    if(selectedValue == "costum") {
+        $(".specification").removeClass('d-none') // Show the additional input field if "Others" is selected
+    } else {
+        $(".specification").addClass('d-none');  // Hide it if any other option is selected
+    }
+    $("#submit").on("click",function(){
+        alert("ok");
+        if($("#inputDay").val()== null || $("#inputMonth").val()== null || $("#inputYear").val()== null){
+            alert("ok");
+            $("").addClass();
+        }
+    })
+});
+
+</script> 
+<script>
+    $(document).ready(function() {
+    $("#submit").on("click", function(event) {
+        event.preventDefault(); 
+
+        let isEmpty = false;
+
+        $("input, select").each(function() {
+            if ($(this).val() === "" || $(this).val() === null) {
+                $(this).css("border", "1px solid red");  // Highlight empty field
+                if (!isEmpty) {
+                    $(this).focus();  // Focus on the first empty field
+                    $(this).css("border", "");
+                    isEmpty = true;   // Ensure only the first empty field gets focused
+                }
+            } else {
+                $(this).css("border", "");  // Reset the border for non-empty fields
+            }
+        });
+    });
+});
+
+</script>
+</html>
